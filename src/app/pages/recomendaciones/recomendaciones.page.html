@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recomendaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <h1>Recomendacion</h1>
+    <ion-item>
+      <ion-input [(ngModel)]="recomendacion" label="Que recomienda"  labelPlacement="floating"
+      placeholder="...."></ion-input>
+    </ion-item>
+    <ion-item>
+    
+      <ion-textarea class="input-desc" label="Descripcion" labelPlacement="floating"
+      placeholder="Ingrese una descripcion"></ion-textarea>
+    </ion-item>
+    <ion-button  color="primary" shape="round" (click)="EnviarRecomendacion()">Enviar Recomendacion</ion-button>
+
+  </div>
+</ion-content>
