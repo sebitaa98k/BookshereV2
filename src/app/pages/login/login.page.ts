@@ -65,15 +65,20 @@ export class LoginPage implements OnInit {
       this.usuario === this.usuarioV &&
       this.password === this.passwordV
     ) {
+      this.usuario = "";
+      this.password = "";
       this.router.navigate(['/feed']);
     } else if (
       this.usuario === this.usuarioAdmin &&
       this.password === this.passwordAdmin
     ) {
       this.router.navigate(['/administrador']);
+    } else if(!this.passwordV && !this.usuarioV){
+      this.password = ""
+      this.MostrarAlerta('Cree un usuario');
     } else {
       this.password = ""
-      this.MostrarAlerta('Los datos son incorrectos o no se creo un usuario');
+      this.MostrarAlerta('Los datos son incorrectos');
     }
   }
 

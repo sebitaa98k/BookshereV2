@@ -33,15 +33,26 @@ export class RegistrarsePage implements OnInit {
   ngOnInit() {
   }
 
+
+  validarCorreo(email: string){
+    const patron = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return patron.test(email)
+  }
+
   validacionDatosCorreo(){
     if(!this.username || !this.password || !this.email || !this.passwordR){
       this.MostrarAlerta('Se deben añadir todos los datos den los cuadros')
+    }else if(!this.validarCorreo(this.email)){
+      this.MostrarAlerta('Ingrese un correo bueno')
+    }else if(this.password.length < 8 ){
+      this.MostrarAlerta('La contraseña debe ser de mas de 8 caracteres')
     }else if(this.password !== this.passwordR){
       this.MostrarAlerta('Las contraseñas son diferentes');
     }else{
      this.Registrarse();
     }
   }
+
 
 
   Registrarse(){
