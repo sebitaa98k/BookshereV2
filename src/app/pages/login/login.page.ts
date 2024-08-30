@@ -77,5 +77,11 @@ export class LoginPage implements OnInit {
     }
   }
 
+  registrarse(){
+    this.usuario = ""
+    this.password = ""
+    this.router.navigate(['/registrarse'])
+  }
+
   ngOnInit() {}
 }

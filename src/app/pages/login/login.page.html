@@ -40,7 +40,7 @@
     </form>
 
     <!-- Botón de Crear Cuenta -->
-    <ion-button expand="full" color="warning" [routerLink]="['/registrarse']" shape="round">Crear Cuenta</ion-button>
+    <ion-button expand="full" color="warning" (click)="registrarse()" shape="round">Crear Cuenta</ion-button>
 
     <p> No recuerdas tu clave? <a routerLink="/recuperar-contra">Recuperala aqui</a></p>
 
