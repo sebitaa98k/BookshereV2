@@ -43,7 +43,7 @@ export class RegistrarsePage implements OnInit {
     if(!this.username || !this.password || !this.email || !this.passwordR){
       this.MostrarAlerta('Se deben añadir todos los datos den los cuadros')
     }else if(!this.validarCorreo(this.email)){
-      this.MostrarAlerta('Ingrese un correo bueno')
+      this.MostrarAlerta('Ingrese un correo valido')
     }else if(this.password.length < 8 ){
       this.MostrarAlerta('La contraseña debe ser de mas de 8 caracteres')
     }else if(this.password !== this.passwordR){

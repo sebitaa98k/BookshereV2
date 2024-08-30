@@ -31,7 +31,9 @@ export class CambiarContraPage implements OnInit {
       this.generarToast('Los campos no pueden estar vacios');
     } else if (this.contra !== this.repetircontra) {
       this.generarToast('Las contraseñas no coinciden');
-    } else {
+    } else if(this.contra.length < 8 || this.repetircontra,length <8){
+      this.generarToast('La contraseña debe mayor a 8 caracteres');
+    }else{
       this.generarToast('Contraseña cambiada con exito')
       this.router.navigate(['/login']);
 

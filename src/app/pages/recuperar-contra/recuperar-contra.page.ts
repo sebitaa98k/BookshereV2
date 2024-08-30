@@ -18,10 +18,10 @@ export class RecuperarContraPage implements OnInit {
 
   }
 
-  async generarAlerta(){
+  async generarAlerta(mensaje : string){
     const alerta = await this.alertcontroller.create({
       header: 'Error',
-      message: 'Debe ingresar un correo',
+      message: mensaje,
       buttons:['OK']
     })
     await alerta.present();
@@ -31,12 +31,18 @@ export class RecuperarContraPage implements OnInit {
   }
 
 
+  validarCorreo(correo : string){
+    const patron = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return patron.test(correo)
+  }
+
   irCambiarContra(){
     if(!this.correo){
-      this.generarAlerta()
+      this.generarAlerta('Debe Ingresar un correo')
+    }else if(!this.validarCorreo(this.correo)){
+      this.generarAlerta('Debe Ingresar un correo valido')
     }else{
-      this.router.navigate(['/cambiar-contra'])
-    }
+      this.router.navigate(['/cambiar-contra'])}
   }
 
 
