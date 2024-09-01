@@ -72,6 +72,9 @@
         (click)="validacionDatosCorreo()"
         >Crear Cuenta</ion-button
       >
+      <p *ngIf="ValidarIgualdad" style="color: red">La contraseñas no coinciden</p>
+      <p *ngIf="ValidarLargoP" style="color: red;">La contraseña debe tener valores especiales</p>
+      <p *ngIf="ValidacionC"  style="color: red;">Ingrese bien su correo</p>
     </form>
   </div>
 </ion-content>

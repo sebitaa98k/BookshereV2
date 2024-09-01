@@ -14,6 +14,11 @@ export class RegistrarsePage implements OnInit {
   email: string | undefined;
   passwordR: string | undefined;
 
+  ValidacionC : boolean = false
+  ValidarLargoP : boolean = false
+  ValidarIgualdad : boolean = false
+  
+
 
     // el alertcontroller es para las pantallaz de errores emergentes, bueno no necesariamente de errores
   constructor(private router:Router, private alertcontroller: AlertController, private menuController: MenuController) {
@@ -39,19 +44,41 @@ export class RegistrarsePage implements OnInit {
     return patron.test(email)
   }
 
+  validarPassword(password: string){
+    const patron = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=..)[A-Za-z\d.]{6,}$/;
+    return patron.test(password)
+  }
+
   validacionDatosCorreo(){
     if(!this.username || !this.password || !this.email || !this.passwordR){
       this.MostrarAlerta('Se deben añadir todos los datos den los cuadros')
-    }else if(!this.validarCorreo(this.email)){
-      this.MostrarAlerta('Ingrese un correo valido')
-    }else if(this.password.length < 8 ){
-      this.MostrarAlerta('La contraseña debe ser de mas de 8 caracteres')
-    }else if(this.password !== this.passwordR){
-      this.MostrarAlerta('Las contraseñas son diferentes');
-    }else{
-     this.Registrarse();
+      return;
     }
-  }
+
+    if(!this.validarCorreo(this.email)){
+      this.ValidacionC = true
+      return;
+      }else{
+      this.ValidacionC = false
+      }
+
+
+
+    if(!this.validarPassword(this.password) || !this.validarPassword(this.passwordR)){
+      this.ValidarLargoP = true
+    } else{
+      this.ValidarLargoP = false
+      return;
+    }
+
+    if(this.password !== this.passwordR){
+      this.ValidarIgualdad = true
+    } else {
+      this.ValidarIgualdad = false
+      this.Registrarse()
+    }
+
+    }
 
 
 
@@ -63,7 +90,7 @@ export class RegistrarsePage implements OnInit {
         email : this.email
       }
     }
-
+    
     this.router.navigate(['/login'],navigationextras);
 
   }

@@ -58,6 +58,7 @@ export class LoginPage implements OnInit {
   //Funcion para iniciar sesion, tiene condiciones para evitar que no se ingresen datos, que los datos sean incorrectos
   //o para entrar como administrador
 
+  
   inicioSesion() {
     if (!this.usuario || !this.password) {
       this.MostrarAlerta('Debe ingresar datos');
@@ -94,6 +95,7 @@ export class LoginPage implements OnInit {
       this.MostrarAlerta('Cree un usuario')
     }else{
       this.router.navigate(['/recuperar-contra'])
+      
     }
   }
 
